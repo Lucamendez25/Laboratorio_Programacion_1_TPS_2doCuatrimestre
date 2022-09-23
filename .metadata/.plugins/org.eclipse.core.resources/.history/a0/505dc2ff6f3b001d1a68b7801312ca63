@@ -61,11 +61,11 @@ int SubMenuJugadores(int*, int*, int*, int*, int*, int*, int*, int*, int*, int*,
 /// @return retorna del 1 al 6, para poder elegir la region
 int SubMenuJugadoresRegion();
 
-/// @fn float CalcularPromedios(int, int)
+/// @fn float CalcularPromedios(int*, int*)
 /// @brief divide la cantidad de jugadores de una region, por la cantidad de jugadores total
 ///
-/// @param recibe el valor de la cantidad de jugadores de una determinada region
-/// @param recibe el valor del contador de jugadores total
+/// @param recibe la direccion de la cantidad de jugadores de una determinada region
+/// @param recibe la direccion del contador de jugadores total
 /// @return retorna el promedio de una region
 float CalcularPromedios(int, int);
 
@@ -81,13 +81,13 @@ float CalcularPromedios(int, int);
 /// @return retorna a 1 si el promedio de uefa es mayor a todos, sino retorna 0
 int ComparadorRegiones(float,float,float,float,float,float);
 
-/// @fn float CalcularCostoDeMantenimiento(float, float, float)
+/// @fn float CalcularCostoDeMantenimiento(float*, float*, float*)
 /// @brief Suma todos los costos
 ///
-/// @param recibe el valor de hospedaje
-/// @param recibe el valor de comida
-/// @param recibe el valor de transporte
+/// @param recibe la direccion del valor de hospedaje
+/// @param recibe la direccion del valor de comida
+/// @param recibe la direccion del valor de transporte
 /// @return devuelve la suma de todos los costos ya realizado
-float CalcularCostoDeMantenimiento(float,float,float);
+float CalcularCostoDeMantenimiento(float*,float*,float*);
 
 #endif /* MIBIBLIOTECA_H_ */

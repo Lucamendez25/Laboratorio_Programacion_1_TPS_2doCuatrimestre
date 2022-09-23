@@ -256,10 +256,10 @@ float CalcularPromedios(int region, int contadorJugadores)
 	return promedio;
 }
 ///////////////////////////////////////////////////CALCULOS////////////////////////////////////////////////////////////////////////////////////////
-float CalcularCostoDeMantenimiento(float hospedaje, float comida, float transporte)
+float CalcularCostoDeMantenimiento(float *pHospedaje, float *pComida, float *pTransporte)
 {
 	float total;
-	total=hospedaje+comida+transporte;
+	total=*pHospedaje+*pComida+*pTransporte;
 	return total;
 }
 /////////////////////////////////////////////////COMPARADORES////////////////////////////////////////////////////////////////////////////////

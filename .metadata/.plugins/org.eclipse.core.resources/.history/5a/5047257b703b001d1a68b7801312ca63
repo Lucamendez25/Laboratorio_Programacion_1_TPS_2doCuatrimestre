@@ -61,7 +61,7 @@ int SubMenuJugadores(int*, int*, int*, int*, int*, int*, int*, int*, int*, int*,
 /// @return retorna del 1 al 6, para poder elegir la region
 int SubMenuJugadoresRegion();
 
-/// @fn float CalcularPromedios(int, int)
+/// @fn float CalcularPromedios(int*, int*)
 /// @brief divide la cantidad de jugadores de una region, por la cantidad de jugadores total
 ///
 /// @param recibe el valor de la cantidad de jugadores de una determinada region

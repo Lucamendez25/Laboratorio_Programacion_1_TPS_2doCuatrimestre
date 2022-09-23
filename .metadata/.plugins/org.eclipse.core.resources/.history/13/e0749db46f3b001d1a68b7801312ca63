@@ -66,14 +66,13 @@ int main(void)
 						todoOkGastos=SubMenuGastos(&hospedaje,&comida,&transporte);
 						if(todoOkGastos==1)
 						{
-							printf("\n\nSe puedieron guardar los valores ingresados\n\n");
+							printf("\n\nExcelente\n\n");
 							flagCalculos=0;
-							system("pause");
+
 						}
 						else
 						{
-							printf("\n\nNo se pudieron guardar los valores ingresados\n\n");
-							system("pause");
+							printf("\n\nRecursa\n\n");
 						}
 						break;
 
@@ -84,21 +83,18 @@ int main(void)
 													&caf,&concacaf,&conmebol,&uefa,&ofc, &contadorJugadores);
 							if(todoOkJugadores==1)
 							{
-								printf("\n\nSe ha guardado el ingreso de su jugador, y su region\n\n");
+								printf("\n\nExcelente\n\n");
 								contadorJugadores++;
 								flagCalculos=0;
-								system("pause");
 							}
 							else
 							{
-								printf("\n\nNo pudo guardarse correctamente, ni el jugador, ni su region\n\n");
-								system("pause");
+								printf("\n\nRecursa\n\n");
 							}
 						}
 						else
 						{
 							printf("\n\n Ya no hay espacio para mas jugadores, son 22/22\n\n");
-							system("pause");
 						}
 						break;
 					case 3:
@@ -106,14 +102,14 @@ int main(void)
 						{
 							if(hospedaje !=0 && comida !=0 && transporte !=0)
 							{
-								promediosAfc=CalcularPromedios(afc,contadorJugadores);
-								promediosCaf=CalcularPromedios(caf,contadorJugadores);
-								promediosConcacaf=CalcularPromedios(concacaf,contadorJugadores);
-								promediosConmebol=CalcularPromedios(conmebol,contadorJugadores);
-								promediosUefa=CalcularPromedios(uefa,contadorJugadores);
-								promediosOfc=CalcularPromedios(ofc,contadorJugadores);
+								promediosAfc=CalcularPromedios(&afc,&contadorJugadores);
+								promediosCaf=CalcularPromedios(&caf,&contadorJugadores);
+								promediosConcacaf=CalcularPromedios(&concacaf,&contadorJugadores);
+								promediosConmebol=CalcularPromedios(&conmebol,&contadorJugadores);
+								promediosUefa=CalcularPromedios(&uefa,&contadorJugadores);
+								promediosOfc=CalcularPromedios(&ofc,&contadorJugadores);
 
-								costoDeMantenimiento=CalcularCostoDeMantenimiento(hospedaje,comida,transporte);
+								costoDeMantenimiento=CalcularCostoDeMantenimiento(&hospedaje,&comida,&transporte);
 
 								if(promediosUefa != 0 && ComparadorRegiones(promediosUefa,promediosAfc,promediosCaf,promediosConcacaf,promediosConmebol,promediosOfc))
 								{
@@ -125,20 +121,17 @@ int main(void)
 
 								printf("Se realizaron los calculos de forma efectiva");
 								flagCalculos=1;
-								system("pause");
 							}
 							else
 							{
 								printf("Primero debe ingresar por lo menos, en cada uno de los campos un precio (hospedaje, comida, transporte) ");
 								flagCalculos=0;
-								system("pause");
 							}
 						}
 						else
 						{
 							printf("Primero debe ingresar un jugador por lo menos ");
 							flagCalculos=0;
-							system("pause");
 						}
 						break;
 					case 4:
@@ -159,21 +152,18 @@ int main(void)
 								printf(" Y recibio un aumento de %.2f, su nuevo valor es de: %.2f\n",
 										porcentajeCostoDeMantenimiento, totalCostoDeMantenimientoAumento );
 							}
-							system("pause");
+
 						}
 						else
 						{
 							printf("\nPrimero deberia hacer las cuentas antes de ingresas a esta opcion\n");
-							system("pause");
 						}
 						break;
 					case 5:
-						printf("\n\n¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡Chau Chau!!!!!!!!!!!!!!!!\n\n");
-						system("pause");
+						printf("Chau Chau");
 						break;
 					default:
 						printf("Esta opcion no es valida...");
-						system("pause");
 						break;
 				}
 
