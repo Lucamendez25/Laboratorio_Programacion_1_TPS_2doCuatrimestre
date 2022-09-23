@@ -1,0 +1,92 @@
+/*
+ * miBiblioteca.h
+ *
+ *  Created on: 19 sep. 2022
+ *      Author: Luca
+ */
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+#include <ctype.h>
+
+#ifndef MIBIBLIOTECA_H_
+#define MIBIBLIOTECA_H_
+
+/// @fn int Menu(float*, float*, float*, int*, int*, int*, int*)
+/// @brief
+///
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @return
+int Menu(float*, float*, float*, int*, int*, int*, int*);
+
+/// @fn int SubMenuGastos(float*, float*, float*)
+/// @brief
+///
+/// @param
+/// @param
+/// @param
+/// @return
+int SubMenuGastos(float*, float*, float*);
+
+/// @fn int SubMenuJugadores(int*, int*, int*, int*, int*, int*, int*, int*, int*, int*, int*)
+/// @brief
+///
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @return
+int SubMenuJugadores(int*, int*, int*, int*, int*, int*, int*, int*, int*, int*, int*);
+
+/// @fn int SubMenuJugadoresRegion()
+/// @brief
+///
+/// @return
+int SubMenuJugadoresRegion();
+
+/// @fn float CalcularPromedios(int*, int*)
+/// @brief
+///
+/// @param
+/// @param
+/// @return
+float CalcularPromedios(int*, int*);
+
+/// @fn int ComparadorRegiones(float, float, float, float, float, float)
+/// @brief
+///
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @param
+/// @return
+int ComparadorRegiones(float,float,float,float,float,float);
+
+/// @fn float CalcularCostoDeMantenimiento(float*, float*, float*)
+/// @brief
+///
+/// @param
+/// @param
+/// @param
+/// @return
+float CalcularCostoDeMantenimiento(float*,float*,float*);
+
+#endif /* MIBIBLIOTECA_H_ */

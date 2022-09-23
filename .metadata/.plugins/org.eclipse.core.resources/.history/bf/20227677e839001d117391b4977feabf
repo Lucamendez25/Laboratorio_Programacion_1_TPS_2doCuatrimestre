@@ -1,0 +1,34 @@
+/*
+ * miBiblioteca.h
+ *
+ *  Created on: 19 sep. 2022
+ *      Author: Luca
+ */
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+#include <ctype.h>
+
+#ifndef MIBIBLIOTECA_H_
+#define MIBIBLIOTECA_H_
+
+
+int Menu(float*, float*, float*, int*, int*, int*, int*);
+int SubMenuGastos(float*, float*, float*);
+int SubMenuJugadores(int*, int*, int*, int*, int*, int*, int*, int*, int*, int*, int*);
+int SubMenuJugadoresRegion();
+//int CalcularPromedios(float*, float*, float*,int*, int*, int*, int*, int*, int*, int*);
+//int CalcularPromediosJugadores(int*, int*, int*, int*, int*, int*);
+float CalcularPromediosAfc(int*, int*);
+float CalcularPromediosCaf(int*, int*);
+float CalcularPromediosConcacaf(int*, int*);
+float CalcularPromediosConmebol(int*, int*);
+float CalcularPromediosUefa(int*, int*);
+float CalcularPromediosOfc(int*, int*);
+
+int CalcularCostoDeMantenimiento(float*,float*,float*)
+
+#endif /* MIBIBLIOTECA_H_ */

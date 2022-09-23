@@ -1,0 +1,119 @@
+/*
+ ============================================================================
+ Name        : TP1.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <conio.h>
+#include <ctype.h>
+#include "miBiblioteca.h"
+#define TRUE 1
+#define FALSE 0
+
+int main(void)
+{
+	setbuf(stdout, NULL);
+
+	int opcion;
+
+	float hospedaje=0;
+	float comida=0;
+	float transporte=0;
+
+	int arqueros=0;
+	int defensores=0;
+	int mediocampistas=0;
+	int delanteros=0;
+
+	int afc=0;
+	int caf=0;
+	int concacaf=0;
+	int conmebol=0;
+	int uefa=0;
+	int ofc=0;
+
+	float promediosAfc=0;
+	float promediosCaf=0;
+	float promediosConcacaf=0;
+	float promediosConmebol=0;
+	float promediosUefa=0;
+	float promediosOfc=0;
+	float costoDeMantenimiento=0;
+
+	int todoOkGastos;
+	int todoOkJugadores;
+//	int todoOkCalculos;
+	int contadorJugadores=0;
+
+
+
+	do
+	{
+		opcion=Menu(&hospedaje,&comida,&transporte, &arqueros, &defensores, &mediocampistas, &delanteros);
+
+		switch(opcion)
+				{
+					case 1:
+						todoOkGastos=SubMenuGastos(&hospedaje,&comida,&transporte);
+						if(todoOkGastos==1)
+						{
+							printf("\nExcelente\n\n");
+						}
+						else
+						{
+							printf("\nRecursa\n\n");
+						}
+						break;
+
+					case 2:
+						if(contadorJugadores < 22)
+						{
+							todoOkJugadores=SubMenuJugadores(&arqueros,&defensores,&mediocampistas,&delanteros,&afc,
+													&caf,&concacaf,&conmebol,&uefa,&ofc, &contadorJugadores);
+							if(todoOkJugadores==1)
+							{
+								printf("\nExcelente\n\n");
+								contadorJugadores++;
+							}
+							else
+							{
+								printf("\nRecursa\n\n");
+							}
+						}
+						else
+						{
+							printf("\n Ya no hay espacio para mas jugadores, son 22/22\n\n");
+						}
+						break;
+					case 3:
+
+							promediosAfc=CalcularPromediosAfc(&afc,&contadorJugadores);
+							promediosCaf=CalcularPromediosCaf(&caf,&contadorJugadores);
+							promediosConcacaf=CalcularPromediosConcacaf(&concacaf,&contadorJugadores);
+							promediosConmebol=CalcularPromediosConmebol(&conmebol,&contadorJugadores);
+							promediosUefa=CalcularPromediosUefa(&uefa,&contadorJugadores);
+							promediosOfc=CalcularPromediosOfc(&ofc,&contadorJugadores);
+
+
+						costoDeMantenimiento=CalcularCostoDeMantenimiento(&hospedaje,&comida,&transporte);
+						if(promediosUefa > promediosAfc && promediosCaf && promediosConcacaf && promediosConmebol && promediosConmebol && promediosOfc)
+						{
+
+						}
+						break;
+					case 4:
+						break;
+					default:
+						break;
+				}
+
+	}while(opcion!=5);
+
+	return EXIT_SUCCESS;
+}
