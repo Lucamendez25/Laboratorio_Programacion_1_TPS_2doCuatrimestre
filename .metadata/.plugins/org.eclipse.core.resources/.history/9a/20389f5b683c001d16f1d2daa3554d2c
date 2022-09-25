@@ -6,19 +6,16 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <conio.h>
-#include <ctype.h>
 #include "miBiblioteca.h"
 
-//////////////////////////////////////MENU PRINCIPAL////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////MENU PRINCIPAL/////////////////////////////////////////////////////////////////////////////////
 int Menu(float *pHospedaje, float *pComida, float *pTransporte, int *pArqueros, int *pDefensores, int *pMediocampitas, int *pDelanteros)
 {
 	int opcion;
 
 	if(pHospedaje != NULL && pComida != NULL && pTransporte != NULL && pArqueros != NULL && pDefensores != NULL && pMediocampitas != NULL && pDelanteros != NULL)
 	{
-		printf( "MENU PRINCIPAL				\n"
+		printf( "\n\n\nMENU PRINCIPAL				\n"
 				"1. Ingreso de los costos de Mantenimiento.\n"
 				"Costo de hospedaje -> $%.2f\n"
 				"Costo de comida -> $%.2f\n"
@@ -38,7 +35,7 @@ int Menu(float *pHospedaje, float *pComida, float *pTransporte, int *pArqueros, 
 	return opcion;
 }
 
-//////////////////////////////////////////////////SUBMENU///////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////SUBMENU//////////////////////////////////////////////////////////////////////////////////////
 int SubMenuGastos(float *pHospedaje, float *pComida, float *pTransporte)
 {
 	int retorno;
@@ -61,19 +58,37 @@ int SubMenuGastos(float *pHospedaje, float *pComida, float *pTransporte)
 					printf("Cuanto es la cantidad a sumar?\n"
 							"Cantidad: ");
 					scanf("%f", &dinero);
-					*pHospedaje+=dinero;
+					while(dinero < 0 && dinero >100000)
+					{
+						printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
+								"Cantidad: ");
+						scanf("%f", &dinero);
+					}
+					*pHospedaje=dinero;
 					break;
 				case 2:
 					printf("Cuanto es la cantidad a sumar?\n"
 							"Cantidad: ");
 					scanf("%f", &dinero);
-					*pComida+=dinero;
+					while(dinero < 0 && dinero >100000)
+					{
+						printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
+								"Cantidad: ");
+						scanf("%f", &dinero);
+					}
+					*pComida=dinero;
 					break;
 				case 3:
 					printf("Cuanto es la cantidad a sumar?\n"
 							"Cantidad: ");
 					scanf("%f", &dinero);
-					*pTransporte+=dinero;
+					while(dinero < 0 && dinero >100000)
+					{
+						printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
+								"Cantidad: ");
+						scanf("%f", &dinero);
+					}
+					*pTransporte=dinero;
 					break;
 			}
 		retorno=1;
@@ -201,6 +216,12 @@ int SubMenuJugadoresRegion()
 	printf("Ingrese numero de camiseta: ");
 	scanf("%d", &camiseta);
 
+	while(camiseta < 1 || camiseta >99 )
+	{
+		printf("Reingrese numero de camiseta(del 1 al 99): ");
+		scanf("%d", &camiseta);
+	}
+
 
 	printf("Ingrese region: \n "
 			"1-AFC\n"
@@ -226,66 +247,33 @@ int SubMenuJugadoresRegion()
 
 	return region;
 }
-/*
-int CalcularPromedios(float *pHospedaje, float *pComida, float *pTransporte, int *pAfc,int *pCaf, int *pConcacaf, int *pConmebol, int *pUefa, int *pOfc, int *pContadorJugadores)
-{
-	int retorno;
-	int todoOkPromedioJugadores;
 
-	if(pHospedaje != NULL && pComida != NULL && pTransporte != NULL && pAfc != NULL && pCaf != NULL &&pConcacaf != NULL
-			&& pConmebol != NULL && pUefa != NULL && pOfc != NULL &&pContadorJugadores !=NULL)
+/////////////////////////////////////////////////////PROMEDIOS//////////////////////////////////////////////////////////////////////////////////////
+float CalcularPromedios(int region, int contadorJugadores)
+{
+	float promedio;
+	promedio= (float)region/(contadorJugadores);
+	return promedio;
+}
+///////////////////////////////////////////////////CALCULOS////////////////////////////////////////////////////////////////////////////////////////
+float CalcularCostoDeMantenimiento(float hospedaje, float comida, float transporte)
+{
+	float total;
+	total=hospedaje+comida+transporte;
+	return total;
+}
+/////////////////////////////////////////////////COMPARADORES////////////////////////////////////////////////////////////////////////////////
+int ComparadorRegiones(float uefa,float afc,float caf,float concacaf,float conmebol,float ofc)
+{
+	int retorno=0;
+
+	if( uefa > afc && uefa > caf && uefa > concacaf && uefa > conmebol && uefa > ofc)
 	{
-		todoOkPromedioJugadores=CalcularPromediosJugadores();
+		retorno = 1;
 	}
 
 	return retorno;
 }
-*/
 
-float CalcularPromediosAfc(int* afc, int* contadorJugadores)
-{
-	float promedio;
-
-	promedio= (float)*afc/(*contadorJugadores);
-	printf("%.2f", promedio);
-
-	return promedio;
-}
-float CalcularPromediosAfc(int* caf, int* contadorJugadores)
-{
-	float promedio;
-
-	promedio= (float)*caf/(*contadorJugadores);
-	printf("%.2f", promedio);
-
-	return promedio;
-}
-float CalcularPromediosConcacaf(int* concacaf, int* contadorJugadores)
-{
-	float promedio;
-
-	promedio= (float)*concacaf/(*contadorJugadores);
-	printf("%.2f", promedio);
-
-	return promedio;
-}
-float CalcularPromediosConmebol(int* conmebol, int* contadorJugadores)
-{
-	float promedio;
-
-	promedio= (float)*conmebol/(*contadorJugadores);
-	printf("%.2f", promedio);
-
-	return promedio;
-}
-float CalcularPromediosUefa(int* uefa, int* contadorJugadores)
-{
-	float promedio;
-
-	promedio= (float)*uefa/(*contadorJugadores);
-	printf("%.2f", promedio);
-
-	return promedio;
-}
 
 

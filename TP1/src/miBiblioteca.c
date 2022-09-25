@@ -15,7 +15,7 @@ int Menu(float *pHospedaje, float *pComida, float *pTransporte, int *pArqueros, 
 
 	if(pHospedaje != NULL && pComida != NULL && pTransporte != NULL && pArqueros != NULL && pDefensores != NULL && pMediocampitas != NULL && pDelanteros != NULL)
 	{
-		printf( "\n\n\nMENU PRINCIPAL				\n"
+		printf( "MENU PRINCIPAL				\n"
 				"1. Ingreso de los costos de Mantenimiento.\n"
 				"Costo de hospedaje -> $%.2f\n"
 				"Costo de comida -> $%.2f\n"
@@ -58,37 +58,37 @@ int SubMenuGastos(float *pHospedaje, float *pComida, float *pTransporte)
 					printf("Cuanto es la cantidad a sumar?\n"
 							"Cantidad: ");
 					scanf("%f", &dinero);
-					while(dinero < 0 && dinero >100000)
+					while(dinero < 0 || dinero >100000)
 					{
 						printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
 								"Cantidad: ");
 						scanf("%f", &dinero);
 					}
-					*pHospedaje+=dinero;
+					*pHospedaje=dinero;
 					break;
 				case 2:
 					printf("Cuanto es la cantidad a sumar?\n"
 							"Cantidad: ");
 					scanf("%f", &dinero);
-					while(dinero < 0 && dinero >100000)
+					while(dinero < 0 || dinero >100000)
 					{
 						printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
 								"Cantidad: ");
 						scanf("%f", &dinero);
 					}
-					*pComida+=dinero;
+					*pComida=dinero;
 					break;
 				case 3:
 					printf("Cuanto es la cantidad a sumar?\n"
 							"Cantidad: ");
 					scanf("%f", &dinero);
-					while(dinero < 0 && dinero >100000)
+					while(dinero < 0 || dinero >100000)
 					{
 						printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
 								"Cantidad: ");
 						scanf("%f", &dinero);
 					}
-					*pTransporte+=dinero;
+					*pTransporte=dinero;
 					break;
 			}
 		retorno=1;
@@ -112,13 +112,27 @@ int SubMenuJugadores(int *pArqueros, int *pDefensores, int *pMediocampitas, int 
 	if(pArqueros != NULL && pDefensores != NULL && pMediocampitas != NULL && pDelanteros != NULL && pContadorJugadores !=NULL)
 	{
 		printf(	"\nHay %d jugadores, de 22 disponibles\n"
-				"Arqueros -> %d\n"
-				"Defensores -> %d\n"
-				"Mediocampistas -> %d\n"
-				"Delanteros -> %d\n"
+				"1-Arqueros -> %d\n"
+				"2-Defensores -> %d\n"
+				"3-Mediocampistas -> %d\n"
+				"4-Delanteros -> %d\n"
 				"Que opción elige?: ",
 				*pContadorJugadores,*pArqueros, *pDefensores, *pMediocampitas, *pDelanteros);
 		scanf("%d", &opcion);
+
+		while(opcion <1 || opcion >4)
+		{
+			printf(	"\nIngrese una opcion valida por favor\n"
+					"\nHay %d jugadores, de 22 disponibles\n"
+					"1-Arqueros -> %d\n"
+					"2-Defensores -> %d\n"
+					"3-Mediocampistas -> %d\n"
+					"4-Delanteros -> %d\n"
+					"Que opción elige?: ",
+					*pContadorJugadores,*pArqueros, *pDefensores, *pMediocampitas, *pDelanteros);
+			scanf("%d", &opcion);
+
+		}
 	}
 	switch(opcion)
 	{
@@ -223,7 +237,7 @@ int SubMenuJugadoresRegion()
 	}
 
 
-	printf("Ingrese region: \n "
+	printf("Ingrese region: \n"
 			"1-AFC\n"
 			"2-CAF\n"
 			"3-CONCACAF\n"
@@ -233,7 +247,7 @@ int SubMenuJugadoresRegion()
 			"Que opcion elige: ");
 	scanf("%d", &region);
 
-	while(region <1 && region <6)
+	while(region <1 || region >6)
 	{
 		printf("Ingrese region valida:\n"
 					"1-AFC\n"
