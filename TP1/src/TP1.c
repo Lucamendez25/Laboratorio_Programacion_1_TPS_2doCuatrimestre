@@ -1,8 +1,8 @@
 /*
  ============================================================================
  Name        : TP1.c
- Author      : 
- Version     :
+ Author      : Luca Méndez
+ Version     : Division A
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
  ============================================================================
@@ -55,7 +55,6 @@ int main(void)
 	int flagCalculos;
 	int flagAumentos;
 
-
 	do
 	{
 		opcion=Menu(&hospedaje,&comida,&transporte, &arqueros, &defensores, &mediocampistas, &delanteros);
@@ -66,13 +65,13 @@ int main(void)
 						todoOkGastos=SubMenuGastos(&hospedaje,&comida,&transporte);
 						if(todoOkGastos==1)
 						{
-							printf("\n\nSe puedieron guardar los valores ingresados\n\n");
+							printf("\n\nSe pudieron guardar los valores ingresados\n\n\n");
 							flagCalculos=0;
 							system("pause");
 						}
 						else
 						{
-							printf("\n\nNo se pudieron guardar los valores ingresados\n\n");
+							printf("\n\nNo se pudieron guardar los valores ingresados\n\n\n");
 							system("pause");
 						}
 						break;
@@ -84,20 +83,20 @@ int main(void)
 													&caf,&concacaf,&conmebol,&uefa,&ofc, &contadorJugadores);
 							if(todoOkJugadores==1)
 							{
-								printf("\n\nSe ha guardado el ingreso de su jugador, y su region correctamente.\n\n");
+								printf("\n\nSe ha guardado el ingreso de su jugador, y su region correctamente.\n\n\n");
 								contadorJugadores++;
 								flagCalculos=0;
 								system("pause");
 							}
 							else
 							{
-								printf("\n\nNo pudo guardarse correctamente, ni el jugador, ni su region. Por favor, ingrese nuevamente los datos.\n\n");
+								printf("\n\nNo pudo guardarse correctamente, ni el jugador, ni su region. Por favor, ingrese nuevamente los datos.\n\n\n");
 								system("pause");
 							}
 						}
 						else
 						{
-							printf("\n\n Ya no hay espacio para mas jugadores, son 22/22\n\n");
+							printf("\n\nYa no hay espacio para mas jugadores, son 22/22\n\n\n");
 							system("pause");
 						}
 						break;
@@ -120,23 +119,26 @@ int main(void)
 									porcentajeCostoDeMantenimiento=costoDeMantenimiento * 0.35;
 									totalCostoDeMantenimientoAumento=costoDeMantenimiento + porcentajeCostoDeMantenimiento;
 									flagAumentos=1;
-
+								}
+								else
+								{
+									flagAumentos=0;
 								}
 
-								printf("Se realizaron los calculos de forma efectiva");
+								printf("\nSe realizaron los calculos de forma efectiva\n\n\n");
 								flagCalculos=1;
 								system("pause");
 							}
 							else
 							{
-								printf("Primero debe ingresar por lo menos, en cada uno de los campos un precio (hospedaje, comida, transporte) ");
+								printf("\n\nPrimero debe ingresar por lo menos, en cada uno de los campos un precio (hospedaje, comida, transporte)\n\n\n");
 								flagCalculos=0;
 								system("pause");
 							}
 						}
 						else
 						{
-							printf("Primero debe ingresar un jugador por lo menos... ");
+							printf("\n\nPrimero debe ingresar un jugador por lo menos...\n\n\n");
 							flagCalculos=0;
 							system("pause");
 						}
@@ -151,25 +153,24 @@ int main(void)
 									"\nPromedio de Afc: %.2f"
 									"\nPromedio de Ofc: %.2f"
 									"\nPromedio de Caf: %.2f"
-									"\nEl costo de mantenimiento es: %.2f",
+									"\nEl costo de mantenimiento es: %.2f\n",
 									promediosUefa, promediosConmebol, promediosConcacaf,
 									promediosAfc,promediosOfc, promediosCaf,costoDeMantenimiento);
 							if(flagAumentos==1)
 							{
-								printf(" Y recibio un aumento de %.2f, su nuevo valor es de: %.2f\n",
+								printf("Y recibio un aumento de %.2f, su nuevo valor es de: %.2f\n\n\n",
 										porcentajeCostoDeMantenimiento, totalCostoDeMantenimientoAumento );
 							}
 							system("pause");
 						}
 						else
 						{
-							printf("\nPrimero deberia hacer las cuentas antes de ingresas a esta opcion\n");
+							printf("\n\nPrimero deberia hacer las cuentas antes de ingresas a esta opcion\n\n\n");
 							system("pause");
 						}
 						break;
 					case 5:
-						printf("\n\n¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡Chau Chau!!!!!!!!!!!!!!!!\n\n");
-						system("pause");
+						printf(	"\n\nCHAU CHAU\n\n");
 						break;
 					default:
 						printf("Esta opcion no es valida...");

@@ -3,6 +3,7 @@
  *
  *  Created on: 19 sep. 2022
  *      Author: Luca
+ *      Division A
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -38,65 +39,68 @@ int Menu(float *pHospedaje, float *pComida, float *pTransporte, int *pArqueros, 
 //////////////////////////////////////////////////////SUBMENU//////////////////////////////////////////////////////////////////////////////////////
 int SubMenuGastos(float *pHospedaje, float *pComida, float *pTransporte)
 {
-	int retorno;
+	int retorno=0;
 	int opcion;
 	float dinero=0;
-
-	printf("Elegir opcion:\n"
-		    "1-Costo de hospedaje -> $%.2f\n"
-			"2-Costo de comida -> $%.2f\n"
-			"3-Costo de transporte -> $%.2f\n"
-			"Que opcion elige?: ",
-			*pHospedaje, *pComida, *pTransporte);
-	scanf("%d", &opcion);
-
-	if(opcion>0 && opcion <4)
+	if(pHospedaje != NULL && pComida != NULL && pTransporte != NULL)
 	{
-		switch(opcion)
-			{
-				case 1:
-					printf("Cuanto es la cantidad a sumar?\n"
-							"Cantidad: ");
-					scanf("%f", &dinero);
-					while(dinero < 0 || dinero >100000)
-					{
-						printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
+		printf("Elegir opcion:\n"
+				"1-Costo de hospedaje -> $%.2f\n"
+				"2-Costo de comida -> $%.2f\n"
+				"3-Costo de transporte -> $%.2f\n"
+				"Que opcion elige?: ",
+				*pHospedaje, *pComida, *pTransporte);
+		scanf("%d", &opcion);
+
+		if(opcion>0 && opcion <4)
+		{
+			switch(opcion)
+				{
+					case 1:
+						printf("Cuanto es la cantidad a sumar?\n"
 								"Cantidad: ");
 						scanf("%f", &dinero);
-					}
-					*pHospedaje=dinero;
-					break;
-				case 2:
-					printf("Cuanto es la cantidad a sumar?\n"
-							"Cantidad: ");
-					scanf("%f", &dinero);
-					while(dinero < 0 || dinero >100000)
-					{
-						printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
+						while(dinero < 0 || dinero >100000)
+						{
+							printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
+									"Cantidad: ");
+							scanf("%f", &dinero);
+						}
+						*pHospedaje=dinero;
+						break;
+					case 2:
+						printf("Cuanto es la cantidad a sumar?\n"
 								"Cantidad: ");
 						scanf("%f", &dinero);
-					}
-					*pComida=dinero;
-					break;
-				case 3:
-					printf("Cuanto es la cantidad a sumar?\n"
-							"Cantidad: ");
-					scanf("%f", &dinero);
-					while(dinero < 0 || dinero >100000)
-					{
-						printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
+						while(dinero < 0 || dinero >100000)
+						{
+							printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
+									"Cantidad: ");
+							scanf("%f", &dinero);
+						}
+						*pComida=dinero;
+						break;
+					case 3:
+						printf("Cuanto es la cantidad a sumar?\n"
 								"Cantidad: ");
 						scanf("%f", &dinero);
-					}
-					*pTransporte=dinero;
-					break;
-			}
-		retorno=1;
-	}
-	else
-	{
-		printf("Opcion no valida\n");
-		retorno=0;
+						while(dinero < 0 || dinero >100000)
+						{
+							printf("Ingrese una cantidad valida(Del 1 al 100.000)\n"
+									"Cantidad: ");
+							scanf("%f", &dinero);
+						}
+						*pTransporte=dinero;
+						break;
+				}
+			retorno=1;
+		}
+		else
+		{
+			printf("Opcion no valida\n");
+			retorno=0;
+		}
+
 	}
 	return retorno;
 }
@@ -150,7 +154,7 @@ int SubMenuJugadores(int *pArqueros, int *pDefensores, int *pMediocampitas, int 
 	 		 break;
 
 	 	 case 2:
-	 		 if(*pDefensores < 9)
+	 		 if(*pDefensores < 8)
 			 {
 	 			*pDefensores=*pDefensores+1;
 	 			 flagRegion=1;
@@ -163,7 +167,7 @@ int SubMenuJugadores(int *pArqueros, int *pDefensores, int *pMediocampitas, int 
 
 	 		 break;
 	 	 case 3:
-	 		 if(*pMediocampitas < 9)
+	 		 if(*pMediocampitas < 8)
 			 {
 	 			*pMediocampitas=*pMediocampitas+1;
 	 			 flagRegion=1;
@@ -176,7 +180,7 @@ int SubMenuJugadores(int *pArqueros, int *pDefensores, int *pMediocampitas, int 
 			 }
 	 		 break;
 	 	 case 4:
-	 		 if(*pDelanteros < 5)
+	 		 if(*pDelanteros < 4)
 			 {
 				 *pDelanteros=*pDelanteros+1;
 	 			 flagRegion=1;
@@ -288,6 +292,7 @@ int ComparadorRegiones(float uefa,float afc,float caf,float concacaf,float conme
 
 	return retorno;
 }
+
 
 
 

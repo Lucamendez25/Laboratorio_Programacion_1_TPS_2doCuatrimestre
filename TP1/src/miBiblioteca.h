@@ -3,6 +3,7 @@
  *
  *  Created on: 19 sep. 2022
  *      Author: Luca
+ *      Division A
  */
 
 
@@ -14,6 +15,7 @@
 
 #ifndef MIBIBLIOTECA_H_
 #define MIBIBLIOTECA_H_
+
 
 /// @fn int Menu(float*, float*, float*, int*, int*, int*, int*)
 /// @brief Muestra el menu principal
@@ -89,5 +91,7 @@ int ComparadorRegiones(float,float,float,float,float,float);
 /// @param recibe el valor de transporte
 /// @return devuelve la suma de todos los costos ya realizado
 float CalcularCostoDeMantenimiento(float,float,float);
+
+
 
 #endif /* MIBIBLIOTECA_H_ */
