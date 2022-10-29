@@ -49,60 +49,60 @@ ThemesExtension { color-definition:
 }
 
 ColorDefinition#org-eclipse-tracecompass-tmf-ui-BACKGROUND {
-color: #14143d;
+color: #25143d;
 category: '#org.eclipse.tracecompass.tmf.ui.theme.category';
 label: "Default background";
 }
 
 ColorDefinition#org-eclipse-tracecompass-tmf-ui-FOREGROUND {
-color: #e4e4f6;
+color: #ebe4f6;
 category: '#org.eclipse.tracecompass.tmf.ui.theme.category';
 label: "Default foreground";
 }
 
 ColorDefinition#org-eclipse-tracecompass-tmf-ui-BACKGROUND_SEL {
-color: #e4e4f6;
+color: #ebe4f6;
 category: '#org.eclipse.tracecompass.tmf.ui.theme.category';
 label: "Default background when selected";
 }
 
 ColorDefinition#org-eclipse-tracecompass-tmf-ui-FOREGROUND_SEL {
-color: #14143d;
+color: #25143d;
 category: '#org.eclipse.tracecompass.tmf.ui.theme.category';
 label: "Default list foreground when selected";
 }
 
 ColorDefinition#org-eclipse-tracecompass-tmf-ui-BACKGROUND_SEL_NOFOCUS {
-color: #e4e4f6;
+color: #ebe4f6;
 category: '#org.eclipse.tracecompass.tmf.ui.theme.category';
 label: "Default selection background when selected and no focus";
 }
 
 ColorDefinition#org-eclipse-tracecompass-tmf-ui-FOREGROUND_SEL_NOFOCUS {
-color: #14143d;
+color: #25143d;
 category: '#org.eclipse.tracecompass.tmf.ui.theme.category';
 label: "Default selection foreground when selected and no focus";
 }
 
 ColorDefinition#org-eclipse-tracecompass-tmf-ui-TOOL_BACKGROUND {
-color: #121236;
+color: #201236;
 category: '#org.eclipse.tracecompass.tmf.ui.theme.category';
 label: "Default tool background";
 }
 
 ColorDefinition#org-eclipse-tracecompass-tmf-ui-TOOL_FOREGROUND {
-color: #e4e4f6;
+color: #ebe4f6;
 category: '#org.eclipse.tracecompass.tmf.ui.theme.category';
 label: "Default tool foreground";
 }
 
 
 TimeGraphControl {
-background-color:#14143d;
-color:#e4e4f6
+background-color:#25143d;
+color:#ebe4f6
 }
 
 TimeEventFilterDialog {
-background-color:#14143d;
-color:#e4e4f6
+background-color:#25143d;
+color:#ebe4f6
 }
