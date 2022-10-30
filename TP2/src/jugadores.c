@@ -118,7 +118,7 @@ int cargarJugador(eJugador * pJugador, eConfederacion vecConfederacion[], int ta
 
 		systemCls();
 
-		utn_getFloat(&auxJugador.salario, "\nIngrese salario:", "\nError\n", 1, 999999, 3);
+		utn_getFloat(&auxJugador.salario, "\nIngrese salario:", "\nError\n", 1, 999999999.9, 3);
 		pJugador->salario=auxJugador.salario;
 
 		systemCls();
