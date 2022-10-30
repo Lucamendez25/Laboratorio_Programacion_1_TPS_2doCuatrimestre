@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : TP2.c
- Author      : 
+ Author      : Luca Méndez
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
@@ -19,7 +19,7 @@
 #include "input.h"
 
 
-#define TAM_J 11
+#define TAM_J 3000
 #define TAM_C 7
 
 int main(void)
@@ -41,8 +41,9 @@ int main(void)
 
 	if(todoOkInciazadosJugadores==1 && todoOkIncializadosConfederaciones == 1 )
 	{
-		hardcodearJugadores(&nextLegajoJugadores, listaJugadores, TAM_J, 10);
-		hardcodearConfederaciones(&nextLegajoConfederaciones, listaConfederaciones, TAM_C, 6);
+		//SACAR COMENTADO; PARA TENER LOS DATOS HARDCODEADOS :)
+		//hardcodearJugadores(&nextLegajoJugadores, listaJugadores, TAM_J, 10);
+		//hardcodearConfederaciones(&nextLegajoConfederaciones, listaConfederaciones, TAM_C, 6);
 		do
 		{
 			systemCls();

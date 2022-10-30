@@ -1,9 +1,5 @@
-22:35:49 **** Incremental Build of configuration Debug for project TP2 ****
+22:53:53 **** Incremental Build of configuration Debug for project TP2 ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\jugadores.o" "..\\src\\jugadores.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP2.o" "..\\src\\TP2.c" 
 gcc -o TP2.exe "src\\TP2.o" "src\\confederaciones.o" "src\\input.o" "src\\jugadores.o" "src\\output.o" 
-c:/mingw/bin/../lib/gcc/mingw32/6.3.0/../../../../mingw32/bin/ld.exe: cannot open output file TP2.exe: Permission denied
-collect2.exe: error: ld returned 1 exit status
-22:35:51 **** Incremental Build of configuration Debug for project TP2 ****
-Info: Internal Builder is used for build
-gcc -o TP2.exe "src\\TP2.o" "src\\confederaciones.o" "src\\input.o" "src\\jugadores.o" "src\\output.o" 
+Info: Nothing to build for TP2
