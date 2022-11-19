@@ -65,7 +65,6 @@ int parser_JugadorFromBinary(FILE* pFile , LinkedList* pArrayListJugador)
 {
 	int retorno = -1;
 	Jugador* aux;
-
 	if(pFile != NULL && pArrayListJugador != NULL)
 	{
 		do
@@ -81,7 +80,6 @@ int parser_JugadorFromBinary(FILE* pFile , LinkedList* pArrayListJugador)
 
 		retorno = 0;
 	}
-
     return retorno;
 }
 

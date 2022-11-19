@@ -236,7 +236,7 @@ int jug_getSIdSeleccion(Jugador* this,int* idSeleccion)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-void Jugador_mostrar(Jugador* unJugador)
+void Jugador_mostrar(Jugador* unJugador, LinkedList* pArrayListSeleccion)
 {
 	int auxId;
 	char auxNombreCompleto[100];
@@ -244,6 +244,7 @@ void Jugador_mostrar(Jugador* unJugador)
 	char auxPosicion[30];
 	char auxNacionalidad[30];
 	int auxIdSeleccion;
+	char seleccionStr[30];
 
 
 	jug_getId(unJugador, &auxId);
@@ -252,12 +253,14 @@ void Jugador_mostrar(Jugador* unJugador)
 	jug_getPosicion(unJugador, auxPosicion);
 	jug_getNacionalidad(unJugador, auxNacionalidad);
 	jug_getSIdSeleccion(unJugador, &auxIdSeleccion);
+	Jugador_CargarDescripcionConvocatoria(seleccionStr, auxIdSeleccion, pArrayListSeleccion);
+
 
 
 	if(unJugador != NULL)
 	{
-		printf("|%4d        |    %30s|    %4d|        %20s|     %15s |%15d|\n",
-				auxId,auxNombreCompleto,auxEdad,auxPosicion, auxNacionalidad,auxIdSeleccion);
+		printf("|%4d        | %30s|    %4d|  %20s|     %15s |%20s|\n",
+				auxId,auxNombreCompleto,auxEdad,auxPosicion, auxNacionalidad,seleccionStr);
 	}
 	else
 	{
@@ -265,7 +268,11 @@ void Jugador_mostrar(Jugador* unJugador)
 	}
 
 }
-void Jugador_mostrarConvocado(Jugador* unJugador)
+
+
+
+
+void Jugador_mostrarConvocado(Jugador* unJugador, LinkedList* pArrayListSeleccion)
 {
 	int auxId;
 	char auxNombreCompleto[100];
@@ -273,6 +280,7 @@ void Jugador_mostrarConvocado(Jugador* unJugador)
 	char auxPosicion[30];
 	char auxNacionalidad[30];
 	int auxIdSeleccion;
+	char seleccionStr[30];
 
 	jug_getId(unJugador, &auxId);
 	jug_getNombreCompleto(unJugador, auxNombreCompleto);
@@ -280,13 +288,15 @@ void Jugador_mostrarConvocado(Jugador* unJugador)
 	jug_getPosicion(unJugador, auxPosicion);
 	jug_getNacionalidad(unJugador, auxNacionalidad);
 	jug_getSIdSeleccion(unJugador, &auxIdSeleccion);
+	Jugador_CargarDescripcionConvocatoria(seleccionStr, auxIdSeleccion, pArrayListSeleccion);
+
 
 	if(unJugador != NULL)
 	{
 		if(auxIdSeleccion != 0 && auxIdSeleccion>0)
 		{
-			printf("|%4d        |    %30s|    %4d|        %20s|     %15s |%15d|\n",
-			auxId,auxNombreCompleto,auxEdad,auxPosicion, auxNacionalidad,auxIdSeleccion);
+			printf("|%4d        | %30s|    %4d|  %20s|     %15s |%20s|\n",
+			auxId,auxNombreCompleto,auxEdad,auxPosicion, auxNacionalidad,seleccionStr);
 		}
 	}
 	else
@@ -296,7 +306,37 @@ void Jugador_mostrarConvocado(Jugador* unJugador)
 
 }
 
+int Jugador_CargarDescripcionConvocatoria(char * seleccionStr, int idSeleccion, LinkedList* pArrayListSeleccion)
+{
+	int retorno=-1;
+	int idAux;
+	char auxPaisSeleccion[30];
+	int tam = ll_len(pArrayListSeleccion);
+	Seleccion * auxSeleccion;
 
+
+	for(int i=0; i<tam; i++)
+	{
+		auxSeleccion = ll_get(pArrayListSeleccion, i);
+		selec_getId(auxSeleccion, &idAux);
+		if(idSeleccion==0)
+		{
+			strcpy(seleccionStr, "No convocado");
+		}
+		else
+		{
+			if(idAux==idSeleccion)
+			{
+				selec_getPais(auxSeleccion, auxPaisSeleccion);
+				strcpy(seleccionStr, auxPaisSeleccion);
+			}
+
+		}
+		retorno=0;
+	}
+
+	return retorno;
+}
 int Jugador_PosicionInt(int posicion,char* posicionStr)
 {
 	int retorno = -1;
@@ -482,11 +522,12 @@ int Jugador_modificar(Jugador* auxJugador)
 	{
 		do
 		{
+			systemCls();
 			opcion = subMenu_modificar();
 			switch(opcion)
 			{
 				case 1:
-					if(!utn_getNombre(auxNombreCompleto, 50, "\n◉Ingrese su nuevo nombre:","\n◉Error,reingrese su nombre:(no se aceptan numeros ni simbolos)", 3))
+					if(!utn_getNombre(auxNombreCompleto, 50, "\nIngrese su nuevo nombre:","\nError,reingrese su nombre:(no se aceptan numeros ni simbolos)", 3))
 					{
 						jug_setNombreCompleto(auxJugador, auxNombreCompleto);
 						printf("\nSu cambio se ha realizado exitosamente\n");
@@ -497,7 +538,7 @@ int Jugador_modificar(Jugador* auxJugador)
 					}
 					break;
 				case 2:
-					if(!utn_getNumero(&auxEdad, "\nIngrese su nueva edad:", "\n◉Error,reingrese una edad valida:", 18, 99, 3))
+					if(!utn_getNumero(&auxEdad, "\nIngrese su nueva edad:", "\nError,reingrese una edad valida:", 18, 99, 3))
 					{
 						jug_setEdad(auxJugador, auxEdad);
 						printf("\nSu cambio se ha realizado exitosamente\n");
@@ -521,11 +562,11 @@ int Jugador_modificar(Jugador* auxJugador)
 						Jugador_nacionalidadInt(nacionalidad, auxNacionalidad);
 						jug_setNacionalidad(auxJugador,auxNacionalidad);
 					}
-					printf("\n◉Su cambio se ha realizado exitosamente\n");
+					printf("\nSu cambio se ha realizado exitosamente\n");
 					break;
 
 				default:
-					printf("\n◉Opcion incorrecta..\n");
+					printf("\nOpcion incorrecta..\n");
 					break;
 			}
 

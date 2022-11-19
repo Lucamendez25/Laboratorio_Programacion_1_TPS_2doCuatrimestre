@@ -37,9 +37,9 @@ int jug_getEdad(Jugador* this,int* edad);//
 int jug_setIdSeleccion(Jugador* this,int idSeleccion); //
 int jug_getSIdSeleccion(Jugador* this,int* idSeleccion);//
 
-void Jugador_mostrar(Jugador* unJugador);//
-void Jugador_mostrarConvocado(Jugador* unJugador);//
-
+void Jugador_mostrar(Jugador* unJugador, LinkedList* pArrayListSeleccion);//
+void Jugador_mostrarConvocado(Jugador* unJugador, LinkedList* pArrayListSeleccion);//
+int Jugador_CargarDescripcionConvocatoria(char * seleccionStr, int idSeleccion, LinkedList* pArrayListSeleccion);//
 
 int Jugador_PosicionInt(int posicion,char* posicionStr);//
 int Jugador_nacionalidadInt(int seleccion, char * seleccionStr);//

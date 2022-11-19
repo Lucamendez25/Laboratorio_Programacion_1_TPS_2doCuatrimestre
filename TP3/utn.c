@@ -563,3 +563,19 @@ int subMenu_confederacion()
 }
 
 
+void systemCls()
+{
+	for(int i=0; i<50;i++)
+	{
+		printf("\n\n\n");
+	}
+}
+
+void systemPause()
+{
+	char seguir[50];
+	printf("presione enter para continuar");
+	fflush(stdin);
+	gets(seguir);
+}
+
