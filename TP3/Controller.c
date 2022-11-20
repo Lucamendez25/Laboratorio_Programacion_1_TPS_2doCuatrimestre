@@ -198,7 +198,7 @@ int controller_listarJugadores(LinkedList* pArrayListJugador, LinkedList* pArray
 	{
 		printf("\nError\n");
 	}
-	printf("|===========================================================================================================================|\n");
+	printf("|========================================================================================================================|\n");
 
     return retorno;
 }
@@ -230,11 +230,11 @@ int controller_ordenarJugadores(LinkedList* pArrayListJugador)
 			printf("\nPara ver los cambios listar los jugadores (Opcion 5 del menu principal)\n");
 		break;
 		case 2:
-			ll_sort(pArrayListJugador,Jugador_ordenaNombre,orden);
+			ll_sort(pArrayListJugador,Jugador_ordenaPorEdad,orden);
 			printf("\nPara ver los cambios listar las selecciones(Opcion 5 del menu principal)\n");
 		break;
 		case 3:
-			ll_sort(pArrayListJugador,Jugador_ordenaPorEdad,orden);
+			ll_sort(pArrayListJugador,Jugador_ordenaNombre,orden);
 			printf("\nPara ver los cambios listar los pasajeros (Opcion 5 del menu principal)\n");
 		break;
 		case 4:
@@ -304,12 +304,21 @@ int controller_guardarJugadoresModoBinario(char* path , LinkedList* pArrayListJu
 			parser_guardarBinarioJugador(pFile, listaJugadoresConvocados);
 			printf("\nSe guardo correctamente en bin..\n");
 			fclose(pFile);
+			printf("\nPara poder ver esta nueva lista, dirigase a la opcion listar del menu(opcion 5) \n");
 		}
 		retorno = 0;
 	}
 	return retorno;
 }
 
+/**
+ * @brief Crea la nueva lista con jugadores de confederacion elegida por el usuario
+ *
+ * @param pArrayListJugador
+ * @param pArrayListJugadorConvocados
+ * @param pArrayListSeleccion
+ * @return
+ */
 int controller_jugadoresConfederacionConvocados(LinkedList* pArrayListJugador, LinkedList * pArrayListJugadorConvocados, LinkedList* pArrayListSeleccion)
 {
 	int retorno = -1;
@@ -497,7 +506,13 @@ int controller_guardarSeleccionesModoTexto(char* path , LinkedList* pArrayListSe
 }
 
 
-
+/**
+ * @brief Listar Jugadores solo Convocados
+ *
+ * @param pArrayListJugador
+ * @param pArrayListSeleccion
+ * @return
+ */
 int controller_listarJugadoresConvocados(LinkedList* pArrayListJugador, LinkedList* pArrayListSeleccion)
 {
 	int retorno = -1;
@@ -509,9 +524,9 @@ int controller_listarJugadoresConvocados(LinkedList* pArrayListJugador, LinkedLi
 	if(pArrayListJugador != NULL)
 	{
 		flag=0;
-	    printf("\n|=============================================LISTA JUGADORES=============================================================|\n");
-		printf("|ID                       NOMBRE           EDAD                   POSICION             NACIONALIDAD          CONVOCADO      |\n");
-		printf("|===========================================================================================================================|\n");
+	  printf("\n|=============================================LISTA JUGADORES===========================================================|\n");
+		printf("|ID                       NOMBRE           EDAD                   POSICION             NACIONALIDAD          CONVOCADO  |\n");
+		printf("|=======================================================================================================================|\n");
 		for(i=0;i<tam;i++)
 		{
 			if(!ll_isEmpty(pArrayListJugador))
@@ -532,12 +547,18 @@ int controller_listarJugadoresConvocados(LinkedList* pArrayListJugador, LinkedLi
 	{
 		printf("\nError\n");
 	}
-	printf("|===========================================================================================================================|\n");
+	printf("|=======================================================================================================================|\n");
 
     return retorno;
 }
 
-
+/**
+ * @brief Convoca JUgador
+ *
+ * @param pArrayListJugador
+ * @param pArrayListSeleccion
+ * @return
+ */
 int controller_convocarJugadores(LinkedList* pArrayListJugador, LinkedList* pArrayListSeleccion)
 {
 	int retorno = -1;
@@ -597,7 +618,13 @@ int controller_convocarJugadores(LinkedList* pArrayListJugador, LinkedList* pArr
 	return retorno;
 }
 
-
+/**
+ * @brief Da de baja a una convocatoria
+ *
+ * @param pArrayListJugador
+ * @param pArrayListSeleccion
+ * @return
+ */
 int controller_desconvocarJugadores(LinkedList* pArrayListJugador, LinkedList* pArrayListSeleccion)
 {
 	int retorno = -1;

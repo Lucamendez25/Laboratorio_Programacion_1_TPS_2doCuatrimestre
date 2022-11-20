@@ -673,6 +673,8 @@ int Jugador_ordenaPorNacionalidad(void* pJugadorUno , void* pJugadorDos)
 	int retorno = -1;
 	char nacionalidadJugadorUno[50];
 	char nacionalidadJugadorDos[50];
+	char nombreJugadorUno[30];
+	char nombreJugadorDos[30];
 	Jugador* jugadorUno = NULL;
 	Jugador* JugadorDos = NULL;
 
@@ -685,7 +687,16 @@ int Jugador_ordenaPorNacionalidad(void* pJugadorUno , void* pJugadorDos)
 		{
 			jug_getNacionalidad(jugadorUno, nacionalidadJugadorUno);
 			jug_getNacionalidad(JugadorDos, nacionalidadJugadorDos);
-			retorno = strcmp(nacionalidadJugadorUno,nacionalidadJugadorDos);
+			if(strcmp(nacionalidadJugadorUno,nacionalidadJugadorDos)==0)
+			{
+				jug_getNombreCompleto(jugadorUno, nombreJugadorUno);
+				jug_getNombreCompleto(JugadorDos, nombreJugadorDos);
+				retorno = strcmp(nombreJugadorUno,nombreJugadorDos);
+			}
+			else
+			{
+				retorno=strcmp(nacionalidadJugadorUno,nacionalidadJugadorDos);
+			}
 		}
 	}
 
@@ -696,6 +707,8 @@ int Jugador_ordenaPorEdad(void* pJugadorUno , void* pJugadorDos)
 	int retorno = -1;
 	int edadJugadorUno;
 	int edadJugadorDos;
+	char nombreJugadorUno[30];
+	char nombreJugadorDos[30];
 	Jugador* jugadorUno = NULL;
 	Jugador* JugadorDos = NULL;
 
@@ -716,7 +729,9 @@ int Jugador_ordenaPorEdad(void* pJugadorUno , void* pJugadorDos)
 			{
 				if(edadJugadorUno == edadJugadorDos)
 				{
-					retorno = 0;
+					jug_getNombreCompleto(jugadorUno, nombreJugadorUno);
+					jug_getNombreCompleto(JugadorDos, nombreJugadorDos);
+					retorno = strcmp(nombreJugadorUno,nombreJugadorDos);
 				}
 			}
 		}

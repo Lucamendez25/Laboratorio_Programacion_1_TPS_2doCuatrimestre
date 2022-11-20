@@ -188,6 +188,10 @@ int main()
             	if(flag == 0)
 				{
             		controller_cargarJugadoresDesdeBinario("jugadores.bin", listaJugadores);
+
+            		controller_cargarSeleccionesDesdeTexto("selecciones.csv", listaSelecciones);
+            		//sino hago esta carga, no me mostraria los paises a los que fueron convocados
+
             		controller_listarJugadores(listaJugadores, listaSelecciones);
             		flag = 1;
 				}

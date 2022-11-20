@@ -562,7 +562,6 @@ int subMenu_confederacion()
 	return opcion;
 }
 
-
 void systemCls()
 {
 	for(int i=0; i<50;i++)
