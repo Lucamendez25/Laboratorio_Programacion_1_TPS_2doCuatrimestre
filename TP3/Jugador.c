@@ -484,10 +484,10 @@ int Jugador_add(LinkedList* this)
 	{
 		if(!(utn_getNombre(auxNombreCompleto, 50, "\nIngrese su nombre completo:", "\n◉Error,reingrese su nombre:(no se aceptan numeros ni simbolos)", 3))
 		&&!(utn_getNumero(&edad, "\nIngrese su edad:", "\n◉Error,reingrese una edad valida:", 18, 99, 3))
-		&&!(utn_getNumero(&posicion, "\nIngrese su posicion: \n1.Portero\n2.Defensa Central\n3.Lateral Izquiero\n4.Lateral Derecho\n5.Pivote\n6.Mediocentro"
-		"\n7.Extremo Izquiero\n8.Extremo Derecho\n9.Media Punta\n10.Delantero Centro.", "\nError,reingrese una posicion valida:", 1, 10, 3))
-		&&!(utn_getNumero(&nacionalidad, "\n1.Argentino\n2.Brasilero\n3.Uruguayo\n4.Portugues\n5.Ingles\n6.Aleman\n7.Mexicano\n8.Estado Unidense"
-		"\n9.Camerunes\n10.Senegales\n11.Australiano\n12.Qatari","\nError, ingrese una seleccion valida",1,12,3))
+		&&!(utn_getNumero(&posicion, "\nIngrese ID su posicion: \n1.Portero\n2.Defensa Central\n3.Lateral Izquiero\n4.Lateral Derecho\n5.Pivote\n6.Mediocentro"
+		"\n7.Extremo Izquiero\n8.Extremo Derecho\n9.Media Punta\n10.Delantero Centro\nOpcion: ", "\nError,reingrese una posicion valida:", 1, 10, 3))
+		&&!(utn_getNumero(&nacionalidad, "\nIngrese ID de su nacionalidad\n1.Argentino\n2.Brasilero\n3.Uruguayo\n4.Portugues\n5.Ingles\n6.Aleman\n7.Mexicano\n8.Estado Unidense"
+		"\n9.Camerunes\n10.Senegales\n11.Australiano\n12.Qatari\nOpcion:","\nError, ingrese una seleccion valida",1,12,3))
 		)
 		{
 			Jugador_leerId(auxId);
@@ -531,10 +531,12 @@ int Jugador_modificar(Jugador* auxJugador)
 					{
 						jug_setNombreCompleto(auxJugador, auxNombreCompleto);
 						printf("\nSu cambio se ha realizado exitosamente\n");
+						systemPause();
 					}
 					else
 					{
 						printf("\nNo se pudo cambiar el nombre\n");
+						systemPause();
 					}
 					break;
 				case 2:
@@ -542,6 +544,12 @@ int Jugador_modificar(Jugador* auxJugador)
 					{
 						jug_setEdad(auxJugador, auxEdad);
 						printf("\nSu cambio se ha realizado exitosamente\n");
+						systemPause();
+					}
+					else
+					{
+						printf("\nNo se pudo cambiar la edad\n");
+						systemPause();
 					}
 					break;
 
@@ -552,6 +560,12 @@ int Jugador_modificar(Jugador* auxJugador)
 						Jugador_PosicionInt(posicion, auxPosicion);
 						jug_setPosicion(auxJugador, auxPosicion);
 						printf("\nSu cambio se ha realizado exitosamente\n");
+						systemPause();
+					}
+					else
+					{
+						printf("\nNo se pudo cambiar la posicion\n");
+						systemPause();
 					}
 					break;
 
@@ -561,12 +575,20 @@ int Jugador_modificar(Jugador* auxJugador)
 					{
 						Jugador_nacionalidadInt(nacionalidad, auxNacionalidad);
 						jug_setNacionalidad(auxJugador,auxNacionalidad);
+						printf("\nSu cambio se ha realizado exitosamente\n");
+						systemPause();
 					}
-					printf("\nSu cambio se ha realizado exitosamente\n");
+					else
+					{
+						printf("\nNo se pudo cambiar la nacionalidad\n");
+						systemPause();
+					}
+
+
 					break;
 
-				default:
-					printf("\nOpcion incorrecta..\n");
+				case 5:
+					printf("\nVolviendo al menu..\n");
 					break;
 			}
 

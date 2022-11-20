@@ -123,6 +123,7 @@ int controller_editarJugador(LinkedList* pArrayListJugador, LinkedList* pArrayLi
 			if(auxJugador!=NULL)
 			{
 				Jugador_mostrar(auxJugador, pArrayListSeleccion);
+				systemPause();
 				Jugador_modificar(auxJugador);
 			}
 			retorno = 0;
@@ -150,14 +151,15 @@ int controller_removerJugador(LinkedList* pArrayListJugador, LinkedList*pArrayLi
 		controller_listarJugadores(pArrayListJugador,pArrayListSeleccion);
 		utn_getNumero(&buscadorId, "\nIngrese el ID del jugador a eliminar:", "\nError,reigrese un ID valido\n", 1, 2000, 3);
 		index = Jugador_buscarPorId(pArrayListJugador, buscadorId);
-
 		if(index != -1)
 		{
 			auxJugador = (Jugador*)ll_get(pArrayListJugador, index);
+			Jugador_mostrar(auxJugador, pArrayListSeleccion);
 			ll_remove(pArrayListJugador, index);
 			Jugador_delete(auxJugador);
 
-			printf("\nLa baja se ha realizado con exito\n");
+			printf("\nLa baja se ha realizado con exito\n\n");
+			systemPause();
 			retorno = 0;
 		}
 		else
@@ -198,7 +200,7 @@ int controller_listarJugadores(LinkedList* pArrayListJugador, LinkedList* pArray
 	{
 		printf("\nError\n");
 	}
-	printf("|========================================================================================================================|\n");
+	printf("|=======================================================================================================================|\n");
 
     return retorno;
 }
@@ -647,7 +649,6 @@ int controller_desconvocarJugadores(LinkedList* pArrayListJugador, LinkedList* p
 			if(Jugador_thisConvocado(auxJugador)!=-1)
 			{
 				jug_getSIdSeleccion(auxJugador, &idSeleccion);
-				printf("%d\n", idSeleccion);
 				indexSeleccion=Seleccion_buscarPorId(pArrayListSeleccion, idSeleccion);
 				if(indexSeleccion!=-1)
 				{

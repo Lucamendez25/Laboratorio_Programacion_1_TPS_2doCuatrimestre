@@ -195,6 +195,8 @@ int Seleccion_restarConvocados(Seleccion* unaSeleccion)
 int Seleccion_ordenaPorConfederacion(void* pSeleccionUno , void* pSeleccionDos)
 {
 	int retorno = -1;
+	char nombrePaisUno[30];
+	char nombrePaisDos[30];
 	char confederacionSeleccionUno[50];
 	char confederacionSeleccionDos[50];
 	Seleccion* seleccionUno = NULL;
@@ -209,7 +211,16 @@ int Seleccion_ordenaPorConfederacion(void* pSeleccionUno , void* pSeleccionDos)
 		{
 			selec_getConfederacion(seleccionUno, confederacionSeleccionUno);
 			selec_getConfederacion(seleccionDos, confederacionSeleccionDos);
-			retorno = strcmp(confederacionSeleccionUno,confederacionSeleccionDos);
+			if(strcmp(confederacionSeleccionUno,confederacionSeleccionDos)==0)
+			{
+				selec_getPais(seleccionUno, nombrePaisUno);
+				selec_getPais(seleccionDos, nombrePaisDos);
+				retorno = strcmp(nombrePaisUno,nombrePaisDos);
+			}
+			else
+			{
+				retorno = strcmp(confederacionSeleccionUno,confederacionSeleccionDos);
+			}
 		}
 	}
 
