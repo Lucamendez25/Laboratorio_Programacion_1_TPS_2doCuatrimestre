@@ -19,7 +19,8 @@
 #include "input.h"
 
 
-#define TAM_J 3000
+#define TAM_J 20
+//#define TAM_J 3000
 #define TAM_C 6
 
 int main(void)
