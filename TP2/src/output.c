@@ -695,9 +695,10 @@ int mostrarRegionMasJugadores(eJugador vecJugador[], eConfederacion vecConfedera
 			}
 		}
 
+
 		for(int i=0; i<tamConfederaciones;i++)
 		{
-			if(!vecJugador[i].isEmpty && contadores[i]==mayor)
+			if(!vecConfederaciones[i].isEmpty && contadores[i]==mayor)
 			{
 				mostrarJugadores(vecJugador, vecConfederaciones, tamJugadores, tamConfederaciones);
 				printf("\n\nLa mayoria de los jugadores son de la region:\n");
@@ -708,7 +709,7 @@ int mostrarRegionMasJugadores(eJugador vecJugador[], eConfederacion vecConfedera
 				printf("------------|------------------------|------------------------|-----------------|------------------------|------------------------|----------------|\n");				for(int j=0; j < tamJugadores;j++)
 				{
 
-					if(vecConfederaciones[i].id == vecJugador[j].idConfederacion)
+					if(!vecJugador[j].isEmpty && vecConfederaciones[i].id == vecJugador[j].idConfederacion)
 					{
 						mostrarJugador(vecJugador[j], vecConfederaciones, tamConfederaciones);
 					}

@@ -369,7 +369,3 @@ int validaSoloNumeroFlotante(char* pAuxiliar)
 	}
 	return rto;
 }
-
-
-
-

@@ -23,7 +23,6 @@ int utn_getCharSeguir(char * pResultado, char * mensaje, char * mensajeError, in
 
 /**
  * @brief almacena como cadena, valida y convierte el texto a numero y lo devuelve como char.
-
  *
  * @param pResultado
  * @return
@@ -152,6 +151,7 @@ float getFloat(char mensaje[]);
  * @return
  */
 int validaSoloNumeroFlotante(char* pData);
+
 
 
 
