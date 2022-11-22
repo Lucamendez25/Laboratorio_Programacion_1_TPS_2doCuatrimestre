@@ -124,7 +124,7 @@ int subMenuModificarConfederaciones()
 	printf("\n         |                                                           |");
 	printf("\n         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 	printf("\n");
-	utn_getInt(&auxOpcion, "\t Ingrese una opcion: ", "\n\t Error ingrese una opcion valida(1 al 6)\n", 1, 3, 3);
+	utn_getInt(&auxOpcion, "\t Ingrese una opcion: ", "\n\t Error ingrese una opcion valida(1 al 3)\n", 1, 3, 3);
 	opcion=auxOpcion;
 
 	return opcion;
@@ -158,7 +158,7 @@ int subMenuMostrarJugadores()
     printf("\n         |                                                           |");
 	printf("\n         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 	printf("\n                                                                      ");
-	utn_getInt(&auxOpcion,"\n\t Ingrese una opcion: ", "\n\t Error ingrese una opcion valida(1 al 6)\n", 1, 6, 3);
+	utn_getInt(&auxOpcion,"\n\t Ingrese una opcion: ", "\n\t Error ingrese una opcion valida(1 al 2)\n", 1, 6, 3);
 	opcion=auxOpcion;
 
 	return opcion;
@@ -184,7 +184,7 @@ int subMenuAlta()
 	printf("\n         |                                                           |");
 	printf("\n         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 	printf("\n");
-	utn_getInt(&auxOpcion, "\t Ingrese una opcion: ", "\n\t Error ingrese una opcion valida(1 al 6)\n", 1, 2, 3);
+	utn_getInt(&auxOpcion, "\t Ingrese una opcion: ", "\n\t Error ingrese una opcion valida(1 al 2)\n", 1, 2, 3);
 	opcion=auxOpcion;
 
 	return opcion;
@@ -209,7 +209,7 @@ int subMenuModificar()
 	printf("\n         |                                                           |");
 	printf("\n         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 	printf("\n");
-	utn_getInt(&auxOpcion, "\t Ingrese una opcion: ", "\n\t Error ingrese una opcion valida(1 al 6)\n", 1, 2, 3);
+	utn_getInt(&auxOpcion, "\t Ingrese una opcion: ", "\n\t Error ingrese una opcion valida(1 al 2)\n", 1, 2, 3);
 	opcion=auxOpcion;
 
 	return opcion;
@@ -235,7 +235,7 @@ int subMenuBaja()
 	printf("\n         |                                                           |");
 	printf("\n         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 	printf("\n");
-	utn_getInt(&auxOpcion, "\t Ingrese una opcion: ", "\n\t Error ingrese una opcion valida(1 al 6)\n", 1, 2, 3);
+	utn_getInt(&auxOpcion, "\t Ingrese una opcion: ", "\n\t Error ingrese una opcion valida(1 al 2)\n", 1, 2, 3);
 	opcion=auxOpcion;
 
 	return opcion;
@@ -446,11 +446,6 @@ int ordenarJugadorPorConfederacion(eJugador vecJugador[], eConfederacion vecConf
 		}
 		todoOk=1;
 	}
-	for (i=0; i<tamJugadores; i++)
-	{
-		mostrarJugador(vecJugador[i], vecConfederacion, tamConfederaciones);
-	}
-
 	return todoOk;
 }
 
@@ -497,6 +492,7 @@ int totalYPromedioTodosSalarios(eJugador vecJugador[], eConfederacion vecConfede
 	int todoOk=0;
 	float acumuladorSalario=0;
 	int contadorJugadores=0;
+	int contadorJugadoresPromedio=0;
 	float promedio;
 	int flag;
 	if(vecJugador != NULL && vecConfederacion != NULL && tamJugadores > 0 && tamConfederaciones > 0)
@@ -510,13 +506,13 @@ int totalYPromedioTodosSalarios(eJugador vecJugador[], eConfederacion vecConfede
 				acumuladorSalario=acumuladorSalario+vecJugador[i].salario;
 				contadorJugadores++;
 			}
-
 		}
 
 		promedio=(float)acumuladorSalario/contadorJugadores;
 
+		printf("\nEl total entre todos los salarios es %.2f", acumuladorSalario);
 		printf("\nLa cantidad de jugadores que hay ingresadas en el sistemas es %d\n", contadorJugadores);
-		printf("El promedio del salario de los jugadores es: %.1f\n", promedio);
+		printf("El promedio del salario de los jugadores es: %.2f\n", promedio);
 
 
 		printf("\n             **** LISTA DE JUGADORES QUE SUPERAN SALARIO PROMEDIO ****\n");
@@ -529,13 +525,20 @@ int totalYPromedioTodosSalarios(eJugador vecJugador[], eConfederacion vecConfede
 			if(!vecJugador[i].isEmpty && vecJugador[i].salario > promedio)
 			{
 				mostrarJugador(vecJugador[i], vecConfederacion, tamConfederaciones);
+				contadorJugadoresPromedio++;
 				flag=0;
 			}
-
 		}
 		if(flag)
 		{
 			printf("                          No hay ningun jugador que supere el salario promedio \n");
+		}
+		else
+		{
+			if(!flag)
+			{
+				printf("\nLa cantidad de jugadores que superan el salario promedio es %d\n", contadorJugadoresPromedio);
+			}
 		}
 	}
 	return todoOk;
@@ -604,6 +607,7 @@ int porcentajeJugadoresPorConfederacion(eJugador vecJugador[], eConfederacion ve
 	systemCls();
 	int todoOk=0;
 	int contadores[tamConfederaciones];
+	int contadorJugadores=0;
 	float porcentaje;
 
 	if(vecJugador != NULL && vecConfederacion != NULL && tamJugadores > 0 && tamConfederaciones > 0)
@@ -612,21 +616,30 @@ int porcentajeJugadoresPorConfederacion(eJugador vecJugador[], eConfederacion ve
 		{
 			contadores[i]=0;
 		}
-
 		for(int i=0; i<tamConfederaciones;i++)
 		{
 			for(int j=0; j < tamJugadores;j++)
 			{
-				if(!vecConfederacion[i].isEmpty && !vecJugador[j].isEmpty && vecJugador[j].idConfederacion == vecConfederacion[i].id)
+				if(!vecConfederacion[i].isEmpty && !vecJugador[j].isEmpty )
 				{
-					contadores[i]++;
+					if(vecJugador[j].idConfederacion == vecConfederacion[i].id)
+					{
+						contadores[i]++;
+					}
 				}
+			}
+		}
+		for(int i=0; i<tamJugadores;i++)
+		{
+			if(!vecJugador[i].isEmpty)
+			{
+				contadorJugadores++;
 			}
 		}
 
 		for(int i=0; i<tamConfederaciones;i++)
 		{
-			if(!vecJugador[i].isEmpty)
+			if(!vecConfederacion[i].isEmpty)
 			{
 				printf("                       ***Lista jugadores de la confederacion %s***\n",  vecConfederacion[i].nombre);
 				printf("------------|------------------------|------------------------|-----------------|------------------------|------------------------|----------------|\n");
@@ -638,12 +651,13 @@ int porcentajeJugadoresPorConfederacion(eJugador vecJugador[], eConfederacion ve
 					{
 						mostrarJugador(vecJugador[j], vecConfederacion, tamConfederaciones);
 					}
-					porcentaje=(float)(contadores[i]*100)/tamJugadores;
+					porcentaje=(float)(contadores[i]*100)/contadorJugadores;
 				}
-
+				printf("\nel porcentaje de jugadores que hay de esta region es: %.2f%c\n\n\n",porcentaje,37);
 			}
-			printf("\nel porcentaje de jugadores que hay de esta region es: %.2f%c\n\n\n",porcentaje,37);
+
 		}
+
 	}
 	return todoOk;
 }

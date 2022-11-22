@@ -212,19 +212,19 @@ int bajaConfederacion(eConfederacion vecConfederaciones[], int tamConfederacione
 		}
 		else
 		{
-			utn_getInt(&legajo, "\nIngrese el Id de la confederacion que desea modificar: ", "\nError, elija un id valido: ", 0, 1000, 3);
+			utn_getInt(&legajo, "\nIngrese el Id de la confederacion que desea modificar: ", "\nError, elija un id valido: ", 0, tamConfederaciones, 3);
 			buscarConfederacionPorId(&indice, legajo, vecConfederaciones, tamConfederaciones);
 
 			while(indice == -1)
 			{
-				printf("No existe un jugador con ese legajo: %d\n", legajo);
-				utn_getCharSeguir(&confirma, "\nConfirma modificacion?: ", "\nError, ingrese una opcion valida s/n (si/no):", 3);
+				printf("No existe una confederacion con ese legajo: %d\n", legajo);
+				utn_getInt(&legajo, "\nIngrese el Id de la confederacion que desea modificar: ", "\nError, elija un id valido: ", 0, tamConfederaciones, 3);
 				buscarConfederacionPorId(&indice, legajo, vecConfederaciones, tamConfederaciones);
 			}
 
 			systemCls();
 			mostrarConfederacion(vecConfederaciones[indice], tamConfederaciones);
-			utn_getCharSeguir(&confirma, "\nConfirma modificacion?s/n: ", "\nError, ingrese una opcion valida s/n (si/no):", 3);
+			utn_getCharSeguir(&confirma, "\nConfirma baja?s/n: ", "\nError, ingrese una opcion valida s/n (si/no):", 3);
 			if(confirma == 's')
 			{
 				vecConfederaciones[indice].isEmpty = 1;

@@ -20,7 +20,7 @@
 
 
 #define TAM_J 3000
-#define TAM_C 7
+#define TAM_C 6
 
 int main(void)
 {
@@ -32,7 +32,7 @@ int main(void)
 	int todoOkInciazadosJugadores;
 	int todoOkIncializadosConfederaciones;
 	int nextLegajoJugadores=1;//, nextLegajoJugadores;
-	int nextLegajoConfederaciones=105;//, nextLegajoJugadores;
+	int nextLegajoConfederaciones=100;//, nextLegajoJugadores;
 	int seguir;
 	int opcionAlta,opcionBaja,opcionModificar;
 
@@ -42,8 +42,8 @@ int main(void)
 	if(todoOkInciazadosJugadores==1 && todoOkIncializadosConfederaciones == 1 )
 	{
 		//SACAR COMENTADO; PARA TENER LOS DATOS HARDCODEADOS :)
-		//hardcodearJugadores(&nextLegajoJugadores, listaJugadores, TAM_J, 10);
-		//hardcodearConfederaciones(&nextLegajoConfederaciones, listaConfederaciones, TAM_C, 6);
+		hardcodearJugadores(&nextLegajoJugadores, listaJugadores, TAM_J, 15);
+		hardcodearConfederaciones(&nextLegajoConfederaciones, listaConfederaciones, TAM_C, 6);
 		do
 		{
 			systemCls();

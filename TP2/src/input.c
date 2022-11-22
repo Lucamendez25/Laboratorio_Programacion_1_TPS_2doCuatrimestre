@@ -21,6 +21,7 @@ int utn_getCharSeguir(char * pResultado, char * mensaje, char * mensajeError, in
 	int retorno = -1;
 	if(pResultado != NULL)
 	{
+		fflush(stdin);
 		while(reintentos > 0)
 		{
 			reintentos--;
@@ -79,7 +80,6 @@ int esNumericaChar ( char * cadena)
 			}
 			i++;
 		}
-
 	}
 	else
 	{
@@ -111,7 +111,6 @@ int utn_getInt(int* pResultado,char* mensaje, char* mensajeError, int min, int m
 {
 	int num;
 	int rto;
-
 	while( intentos > 0)
 	{
 		num = getInt(mensaje);
@@ -135,6 +134,7 @@ int utn_getInt(int* pResultado,char* mensaje, char* mensajeError, int min, int m
 
 int getInt(char mensaje[])
 {
+
 	int retorno = -1;
 	int esNumero;
 	char auxiliar[30];
