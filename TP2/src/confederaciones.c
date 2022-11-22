@@ -99,7 +99,7 @@ int cargarConfederacion(eConfederacion * pConfederacion, eConfederacion vecConfe
 
 		systemCls();
 		mostrarRegiones();
-		utn_getInt(&idRegion, "\nIngrese region de su confederacion: ", "\nError\n", 1, 4, 3);
+		utn_getInt(&idRegion, "\nIngrese region de su confederacion: ", "\nError\n", 1, 6, 3);
 		cargarDescripcionRegion(idRegion, &auxConfederacion);
 		strcpy(pConfederacion->region, auxConfederacion.region);
 
