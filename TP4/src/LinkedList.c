@@ -60,6 +60,7 @@ int ll_len(LinkedList* this)
                         (pNode) Si funciono correctamente
  *
  */
+//Me pide la del nodo que esta atras de todo, entonces itero hasta el ultimo
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
 	Node* pNodo = NULL;
@@ -70,6 +71,7 @@ static Node* getNode(LinkedList* this, int nodeIndex)
 
 		while(nodeIndex > 0)
 		{
+			//recursividad, va apuntando hasta el ultimo
 			pNodo=pNodo->pNextNode;
 			nodeIndex--;
 		}
@@ -100,18 +102,21 @@ Node* test_getNode(LinkedList* this, int nodeIndex)//NO SE TOCA WACHIN
  * \return int Retorna  (-1) Error: si el puntero a la lista es NULL o (si el indice es menor a 0 o mayor al len de la lista)
                         ( 0) Si funciono correctamente
  *
- */
+ */								  //donde quiero meter
 static int addNode(LinkedList* this, int nodeIndex,void* pElement)
+//este lo mete donde queres
 {
     int returnAux = -1;
     Node* nuevoNodo=NULL;
     Node* nodoAnterior=NULL;
-
+    															//No se valida pElement, porque quien sabe... xd
     if(this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this))
     {
+    	//creo el nodo a meter
     	 nuevoNodo = (Node*) malloc(sizeof(Node));
     	 if(nuevoNodo != NULL)
     	 {
+    		 //que apunte a pElement
     		 nuevoNodo->pElement=pElement;
     		 nuevoNodo->pNextNode=getNode(this, nodeIndex);
     		 if(nodeIndex==0)
@@ -119,8 +124,9 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
     			 this->pFirstNode=nuevoNodo;
     		 }
     		 else
-    		 {
+    		 {							//El que viene adelante
     			 nodoAnterior=getNode(this, nodeIndex-1);
+    			 //el nodo anterior apunta al nuevo, porque el nuevo ya lo enganche
     			 nodoAnterior->pNextNode=nuevoNodo;
     		 }
     		 this->size++;
@@ -154,6 +160,7 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)//NO SE TOCA
  */
 int ll_add(LinkedList* this, void* pElement)
 {
+	//este te lo agrega a lo ultimo
     return addNode(this, ll_len(this),pElement);
 }
 
@@ -168,10 +175,12 @@ int ll_add(LinkedList* this, void* pElement)
 void* ll_get(LinkedList* this, int index)
 {
     void * returnAux=NULL;
+    //me da el nodo de ese index
     Node* pNode = getNode(this,index);
 
     if(pNode!=NULL)
-    {
+    {//me devuelve la carga,(pElement), apuntada
+    // por el nodo que esta en el index.
     	returnAux=pNode->pElement;
     }
 
@@ -188,6 +197,7 @@ void* ll_get(LinkedList* this, int index)
                         ( 0) Si funciono correctamente
  *
  */
+//Le pasan un elemento, y despues lo setea, en el nodo de index
 int ll_set(LinkedList* this, int index,void* pElement)
 {
     int returnAux=-1;
@@ -195,6 +205,7 @@ int ll_set(LinkedList* this, int index,void* pElement)
 
     if(pNode!=NULL)
     {
+    	//no free, porque no sabemos si esta en otra LinkedList
     	pNode->pElement=pElement;
     	returnAux=0;
     }
@@ -212,6 +223,7 @@ int ll_set(LinkedList* this, int index,void* pElement)
  *
  */
 int ll_remove(LinkedList* this,int index)
+//Elimina un elemento de la lista en el index ubicado, eliminar un vagon
 {
 	int returnAux=-1;
 	Node* pNodeToDelete = NULL;
@@ -221,13 +233,16 @@ int ll_remove(LinkedList* this,int index)
 		if(index==0)
 		{
 			pNodeToDelete=this->pFirstNode;
+			//agarro al primer nodo de la lista, el 0 lo eliminamos
 			this->pFirstNode = getNode(this, 1);
 
 		}
 		else
-		{
+		{   //agarro nodo adelante
 			pNodeNext=getNode(this, index-1);
+			//apunto el no de adelante, para despues hacerl free
 			pNodeToDelete=pNodeNext->pNextNode;
+			//apunto al nodo de atras, del que vamos a eliminar
 			pNodeNext->pNextNode = pNodeToDelete->pNextNode;
 		}
 		free(pNodeToDelete);
