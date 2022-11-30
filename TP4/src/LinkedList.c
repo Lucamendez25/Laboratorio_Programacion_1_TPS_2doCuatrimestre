@@ -304,6 +304,8 @@ int ll_deleteLinkedList(LinkedList* this)
  *
  */
 int ll_indexOf(LinkedList* this, void* pElement)
+//recorre toda la lista y para buscar el elemento que pedimos, y retorna
+// el vagon donde esta ese elemnto.
 {
 	int returnAux=-1;
 	for(int i=0; i < ll_len(this);i++)
@@ -353,6 +355,7 @@ int ll_isEmpty(LinkedList* this)
  *
  */
 int ll_push(LinkedList* this, int index, void* pElement)
+//Este agrega un nuevo elemento donde yo quiera, en la posicion que le indique
 {
 	return addNode(this, index, pElement);
 }
@@ -367,6 +370,7 @@ int ll_push(LinkedList* this, int index, void* pElement)
  *
  */
 void* ll_pop(LinkedList* this,int index)
+//elimina el elemento que yo le indique
 {
    void* returnAux=ll_get(this, index);
    ll_remove(this, index);
@@ -416,9 +420,12 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
 	{
 		returnAux=1;
 		len=ll_len(this2);
+		//recorro this2, porque tengo que ver si los elementos
+		//de this2, estan en this, no al reves
 		for(int i=0; i<len;i++)
 		{
 			pElement=ll_get(this2, i);
+							//el pElement de this2
 			if(!ll_contains(this, pElement))
 			{
 				returnAux=0;
@@ -438,7 +445,7 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
                                 o (si el indice from es menor a 0 o mayor al len de la lista)
                                 o (si el indice to es menor o igual a from o mayor al len de la lista)
                          (puntero a la nueva lista) Si ok
-*/
+*/										//desde //hasta
 LinkedList* ll_subList(LinkedList* this,int from,int to)
 {
 	LinkedList* cloneArray=NULL;
@@ -450,7 +457,9 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
 		{
 			for(int i=from;i<to; i++)
 			{
+				//agarrando los elementos de this
 				pElement=ll_get(this, i);
+				//metiendolos en en cloneArray esos elementos
 				ll_add(cloneArray, pElement);
 			}
 		}
@@ -467,7 +476,7 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
                                 (puntero a la nueva lista) Si ok
 */
 LinkedList* ll_clone(LinkedList* this)
-{
+{						//desde el primero, hasta el ultimo
     return ll_subList(this, 0, ll_len(this));
 }
 
@@ -533,6 +542,7 @@ LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*))
 				pAux=ll_get(this, i);
 				if(pFunc(pAux))
 				{
+					//agregamos, pero si falla borramos todo
 					if(ll_add(filterList, pAux))
 					{
 						ll_deleteLinkedList(filterList);
